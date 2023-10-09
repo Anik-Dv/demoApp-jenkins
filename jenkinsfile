@@ -1,0 +1,50 @@
+Pipeline {
+
+    Agent Any 
+
+    Stages {
+
+        Stage("compile file") {
+
+            Steps {
+                echo "compiling file"
+                javac app.js
+                javac test.js
+            }
+        }
+
+        Stage("test file") {
+            Steps{
+               echo "code testing"
+            }
+        }
+
+        Stage("build") {
+            /* When {
+                // expression { return env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'release/1.0'}
+            } */
+            Steps {
+                echo "project build"
+                java app
+                java test
+            }
+        }
+
+    }
+
+    Post {
+        Always {
+            echo "Job Complete Over The All Steps"
+        }
+
+        Success {
+            echo "Job Completed Successfully"
+        }
+
+        Failure {
+            echo "Job Fails!"
+        }
+
+    }
+
+}
