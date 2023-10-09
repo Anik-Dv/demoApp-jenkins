@@ -1,6 +1,6 @@
 Pipeline {
 
-    Agent Any 
+    agent any
 
     Stages {
 
@@ -14,15 +14,13 @@ Pipeline {
         }
 
         Stage("test file") {
-            Steps{
+            Steps {
                echo "code testing"
             }
         }
 
         Stage("build") {
-            /* When {
-                // expression { return env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'release/1.0'}
-            } */
+           
             Steps {
                 echo "project build"
                 java app
