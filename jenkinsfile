@@ -1,27 +1,27 @@
-Pipeline {
+pipeline {
 
     agent any
 
-    Stages {
+    stages {
 
-        Stage("compile file") {
+        stage("compile file") {
 
-            Steps {
+            steps {
                 echo "compiling file"
                 javac app.js
                 javac test.js
             }
         }
 
-        Stage("test file") {
-            Steps {
+        stage("test file") {
+            steps {
                echo "code testing"
             }
         }
 
-        Stage("build") {
+        stage("build") {
            
-            Steps {
+            steps {
                 echo "project build"
                 java app
                 java test
@@ -30,16 +30,16 @@ Pipeline {
 
     }
 
-    Post {
-        Always {
+    post {
+        always {
             echo "Job Complete Over The All Steps"
         }
 
-        Success {
+        success {
             echo "Job Completed Successfully"
         }
 
-        Failure {
+        failure {
             echo "Job Fails!"
         }
 
