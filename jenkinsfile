@@ -8,8 +8,8 @@ pipeline {
 
             steps {
                 echo "compiling file"
-                javac app.js
-                javac test.js
+                javac app.java
+                javac test.java
             }
         }
 
